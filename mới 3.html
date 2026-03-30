@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nhóm 3 - 12A3</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Be Vietnam Pro', sans-serif;
+}
+
+body{
+background: linear-gradient(135deg,#0b1f3a,#102a43,#1d4ed8);
+color:#fff;
+}
+
+/* HEADER */
+
+.top-header{
+height:350px;
+background:url("b8ff3d90dd7c53220a6d (2).jpg") center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+.logo img{
+height:90px;
+width:90px;
+border-radius:50%;
+background:white;
+padding:6px;
+}
+
+.logo h1{
+font-size:42px;
+}
+
+/* NAV */
+
+nav{
+background:#0f172a;
+padding:18px;
+display:flex;
+justify-content:center;
+gap:40px;
+}
+
+nav a{
+cursor:pointer;
+color:#cbd5e1;
+text-decoration:none;
+font-weight:600;
+}
+
+nav a:hover{
+color:white;
+}
+
+/* SECTION */
+
+.section{
+display:none;
+padding:70px 20px;
+max-width:900px;
+margin:auto;
+text-align:center;
+animation:fadeUp 0.5s;
+}
+
+.active{
+display:block;
+}
+
+/* MEMBER */
+
+.member{
+background:rgba(255,255,255,0.08);
+padding:18px;
+margin:12px;
+border-radius:12px;
+cursor:pointer;
+transition:0.3s;
+font-size:18px;
+}
+
+.member:hover{
+background:rgba(255,255,255,0.18);
+transform:scale(1.05);
+}
+/* POST BOX */
+.post-box{
+background:rgba(255,255,255,0.1);
+padding:15px;border-radius:10px;
+margin-bottom:20px;
+display:flex;flex-direction:column;gap:10px;
+}
+.post-box input{
+padding:10px;border:none;border-radius:8px;
+}
+.post-box button{
+padding:10px;border:none;border-radius:8px;
+background:#38bdf8;color:white;cursor:pointer;
+}
+
+/* POST */
+.post{
+background:rgba(255,255,255,0.1);
+border-radius:10px;margin-bottom:15px;
+overflow:hidden;text-align:left;
+}
+.post img{width:100%;max-height:300px;object-fit:cover;}
+.post-content{padding:10px;}
+.post-actions{
+display:flex;justify-content:space-between;
+padding:10px;border-top:1px solid rgba(255,255,255,0.2);
+}
+.post-actions button{
+background:none;border:none;color:#38bdf8;cursor:pointer;
+}
+
+
+/* PROJECT */
+
+.project-post{
+background:rgba(255,255,255,0.08);
+border-radius:15px;
+overflow:hidden;
+margin:25px auto;
+max-width:600px;
+text-align:left;
+}
+
+.project-img{
+width:100%;
+height:320px;
+object-fit:cover;
+}
+
+.project-content{
+padding:20px;
+}
+
+/* POPUP */
+
+.popup{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.9);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:999;
+overflow-y:auto;   
+}
+
+.popup.active{
+display:flex;
+}
+
+.popup-box{
+background:#0f172a;
+padding:40px;
+border-radius:20px;
+text-align:left;
+max-width:900px;
+width:95%;
+max-height:80vh;   
+overflow-y:auto;  
+}
+
+.popup-box img{
+width:520px;
+max-width:100%;
+border-radius:18px;
+margin-bottom:30px;
+}
+
+#member-name{
+font-size:42px;
+margin-bottom:10px;
+}
+
+#member-role{
+font-size:24px;
+color:#38bdf8;
+margin-bottom:20px;
+}
+
+.profile-section{
+margin-top:20px;
+text-align:left;
+}
+
+.profile-section h3{
+color:#38bdf8;
+margin-bottom:6px;
+font-size:22px;
+}
+
+.profile-section p{
+color:#cbd5e1;
+font-size:18px;
+line-height:1.7;
+}
+
+.close{
+margin-top:30px;
+cursor:pointer;
+color:#38bdf8;
+font-size:20px;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:30px;
+margin-top:60px;
+background:rgba(0,0,0,0.3);
+}
+
+/* ANIMATION */
+
+@keyframes zoomIn{
+from{
+transform:scale(0.7);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="top-header">
+<div class="logo">
+<img src="cropped_circle_image.png">
+<h1>NHÓM 3 - 12A3</h1>
+</div>
+</div>
+
+<nav>
+<a onclick="showSection('home')">Trang chủ</a>
+<a onclick="showSection('gioithieu')">Giới thiệu</a>
+<a onclick="showSection('thanhvien')">Thành viên</a>
+<a onclick="showSection('duan')">Dự án</a>
+<a onclick="showSection('lienhe')">Liên hệ</a>
+</nav>
+
+<section id="home" class="section active">
+<h2>Website chính thức của Nhóm 3</h2>
+<p>Chuyên nghiệp - Sáng tạo - Bản lĩnh 12A3</p>
+
+<!-- BOX ĐĂNG BÀI -->
+<div class="post-box">
+
+<input id="post-text" placeholder="Bạn đang nghĩ gì...">
+
+<!-- upload ảnh -->
+<input type="file" id="post-file" accept="image/*">
+
+<button onclick="addPost()">Đăng bài</button>
+
+</div>
+
+<div id="post-list"></div>
+
+<!-- DANH SÁCH BÀI -->
+<div id="post-list"></div>
+
+</section>
+
+<section id="gioithieu" class="section">
+<h2>Giới thiệu</h2>
+<p>Nhóm 3 lớp 12A3 là tập thể đoàn kết và sáng tạo.</p>
+</section>
+
+<section id="thanhvien" class="section">
+
+<h2>Danh sách thành viên</h2>
+
+<div class="member" onclick="openMember(
+'Nguyễn Dương Tường Vy',
+'Trưởng nhóm',
+'2952255375925863796.jpg',
+'Mình là người vui vẻ, thân thiện và sống tích cực. Mình thích khám phá những điều mới và luôn cố gắng trở thành phiên bản tốt hơn của chính mình.',
+'Email: ndtvy2138@gmail.com Số điện thoại:0907010652 Facebook:https://www.facebook.com/nguyen.vy.686460/',
+'du lịch, nấu ăn',
+'Giải nhất hsg cấp tx, TOEFL JUNIOR',
+'Everything will be okay'
+)">
+Nguyễn Dương Tường Vy
+</div>
+
+<div class="member" onclick="openMember(
+'Hà Lê Tuệ Nghi',
+'Thành viên',
+'1164995947710377257.jpg',
+'Tính cách vui vẻ, hòa đồng, thích mang năng lượng tích cực cho mọi người xung quanh.',
+'gmail :haletuenghi@gmail.com sđt: 0393423403 fb:https://www.facebook.com/share/1bWXg63TY3/',
+'Đọc sách để khám phá thêm nhiều góc nhìn mới về cuộc sống, Đi dạo, đi chơi và khám phá những nơi thú vị khi có thời gian',
+'cười một cái nguyên lớp bị đổi chỗ ',
+'Sách cho mình tri thức, hành trình cho mình trải nghiệm'
+)">
+Hà Lê Tuệ Nghi
+</div>
+
+<div class="member" onclick="openMember(
+'Nguyễn Bảo Thy',
+'Thành viên',
+'3031962487515363830.jpg',
+'hòa đồng, thân thiện Mục tiêu:đậu đại học, có nhiều tiền ',
+'Email: nguyenthanhvu01011972.st@gmail.com Fb: https://www.facebook.com/share/18D3wUVYJg/ Sđt: 0823800775',
+'Đọc truyện, chụp ảnh, làm đồ thủ công',
+'Còn sống vui vẻ, không bị bệnh',
+'Chậm mà chắc'
+)">
+Nguyễn Bảo Thy
+</div>
+
+<div class="member" onclick="openMember(
+'Võ Thị Huyền Trân',
+'Thành viên',
+'9f6d7fa9cd1f43411a0e.jpg',
+'Một đứa mê ăn uống, thích đi chơi và tận hưởng những khoảnh khắc vui vẻ bên bạn bè. Tính cách lúc dịu dàng lúc ‘khó ở’, nhưng luôn sống thật với cảm xúc của mình. Đang cố gắng mỗi ngày để trở thành phiên bản tốt hơn và hạnh phúc hơn',
+'Email: vothihuyentran1306@gmail.com Facebook: https://www.facebook.com/share/1dAbaFwqh3/ Zalo: 0346795256',
+'Đi chơi, đi lễ hội, tụ tập bạn bè. Nghe nhạc, xem phim, đọc tiểu thuyết, xem sách, tám chuyện',
+'Tích cực tham gia các hoạt động vui chơi, tập thể',
+'Mình không cần hơn ai, chỉ cần tốt hơn mình của hôm qua'
+)">
+Võ Thị Huyền Trân
+</div>
+
+<div class="member" onclick="openMember(
+'Nguyễn Thị Thùy Dương',
+'Thành viên',
+'618927359518092567.jpg',
+'Tính cách: vui vẻ,thân thiện. Mục tiêu: kiếm tiền mua xe hơi',
+'Gmail: thuyduo201@gmail.com Fb: https://www.facebook.com/share/1BYwXUiSk9/?mibextid=wwXIfr  Sđt: 0356022146',
+'thích nấu ăn',
+'được sống trong quân khu 9 cùng với các vận động viên quốc gia',
+'Muốn đi nhanh thì đi một mình, muốn đi xa thì đi cùng nhau'
+)">
+Nguyễn Thị Thùy Dương
+</div>
+
+<div class="member" onclick="openMember(
+'Danh Tuấn Khôi',
+'Thành viên',
+'112789169506902307.jpg',
+'Tính cách: Bình thường  Sở thích : Đi phượt  Mục tiêu : Có tiền ',
+'Email : danhtuankhoi10@gmail.com Số điện thoại: 0327865072',
+'Đi chơi',
+'không có ',
+';-;'
+)">
+Danh Tuấn Khôi
+</div>
+
+<div class="member" onclick="openMember(
+'Trần Hữu Duy',
+'Thành viên',
+'avatar2.jpg',
+'Hướng nội ít nói, không thích học lý thuyết, thích ngũ, thích sửa đồ, mục tiêu là  tất cả các môn trên trung bình.',
+'Email: tranhuuduy2k8@gmail.com  Số điện thoại: 0335327422',
+'xem phim',
+'sửa đồ bình thường thành đồ hư',
+'chưa làm sao biết được thực lực đến đâu'
+)">
+Trần Hữu Duy
+</div>
+
+<div class="member" onclick="openMember(
+'Lâm Văn Huy',
+'Thành viên',
+'2350286646386180363.jpg',
+'Học sinh lớp 12A3.',
+'Email: a@gmail.com',
+'Chơi game',
+'Chưa có',
+'Cố gắng mỗi ngày'
+)">
+Lâm Văn Huy
+</div>
+
+<div class="member" onclick="openMember(
+'Lê Phước Đăng',
+'Thành viên',
+'avatar2.jpg',
+'Học sinh lớp 12A3.',
+'Email: a@gmail.com',
+'Chơi game',
+'Chưa có',
+'Cố gắng mỗi ngày'
+)">
+Lê Phước Đăng
+</div>
+
+<div class="member" onclick="openMember(
+'Nguyễn Phúc Thịnh',
+'Thành viên',
+'avatar2.jpg',
+'Học sinh lớp 12A3.',
+'Email: a@gmail.com',
+'Chơi game',
+'Chưa có',
+'Cố gắng mỗi ngày'
+)">
+Nguyễn Phúc Thịnh
+</div>
+
+</div>
+</section>
+
+<section id="duan" class="section">
+<h2>Dự án của nhóm</h2>
+
+
+</section>
+
+<section id="lienhe" class="section">
+<h2>Liên hệ</h2>
+<p>Email: nhom3.12a3@gmail.com</p>
+</section>
+
+<footer>
+© 2026 Nhóm 3 - 12A3
+</footer>
+
+<!-- POPUP -->
+
+<div id="popup" class="popup">
+<div class="popup-box">
+
+<img id="member-img">
+
+<h2 id="member-name"></h2>
+<p id="member-role"></p>
+
+<div class="profile-section">
+<h3>Giới thiệu</h3>
+<p id="member-bio"></p>
+</div>
+
+<div class="profile-section">
+<h3>Liên hệ</h3>
+<p id="member-contact"></p>
+</div>
+
+<div class="profile-section">
+<h3>Sở thích</h3>
+<p id="member-hobby"></p>
+</div>
+
+<div class="profile-section">
+<h3>Thành tựu</h3>
+<p id="member-achieve"></p>
+</div>
+
+<div class="profile-section">
+<h3>Châm ngôn</h3>
+<p id="member-quote"></p>
+</div>
+
+<div class="close" onclick="closePopup()">Đóng</div>
+
+</div>
+</div>
+
+<script>
+
+function showSection(id){
+var sections=document.querySelectorAll('.section');
+sections.forEach(function(section){
+section.classList.remove('active');
+});
+document.getElementById(id).classList.add('active');
+}
+
+function openMember(name,role,img,bio,contact,hobby,achieve,quote){
+
+document.getElementById("member-name").innerText=name;
+document.getElementById("member-role").innerText=role;
+document.getElementById("member-img").src=img;
+
+document.getElementById("member-bio").innerText=bio;
+document.getElementById("member-contact").innerText=contact;
+document.getElementById("member-hobby").innerText=hobby;
+document.getElementById("member-achieve").innerText=achieve;
+document.getElementById("member-quote").innerText=quote;
+
+document.getElementById("popup").classList.add("active");
+
+}
+
+function closePopup(){
+document.getElementById("popup").classList.remove("active");
+}
+function addPost(){
+
+let text = document.getElementById("post-text").value;
+let fileInput = document.getElementById("post-file");
+let file = fileInput.files[0];
+
+if(text.trim()==="" && !file){
+alert("Đăng gì đó đi!");
+return;
+}
+
+let post = document.createElement("div");
+post.className = "post";
+
+let time = new Date().toLocaleString();
+
+// HEADER
+let html = `
+<div class="post-header">
+<img class="avatar" src="https://i.pravatar.cc/100">
+<div>
+<div class="post-name">Nhóm 3 - 12A3</div>
+<div class="post-time">${time}</div>
+</div>
+</div>
+`;
+
+// 👉 Nếu có ảnh thì mới thêm
+if(file){
+let reader = new FileReader();
+
+reader.onload = function(e){
+
+post.innerHTML = html + `
+<img src="${e.target.result}">
+<div class="post-content">
+<p>${text}</p>
+</div>
+<div class="post-actions">
+<button onclick="likePost(this);event.stopPropagation()">❤️ Thích</button>
+<button onclick="deletePost(this);event.stopPropagation()">🗑 Xóa</button>
+</div>
+`;
+
+document.getElementById("post-list").prepend(post);
+};
+
+reader.readAsDataURL(file);
+
+}else{
+
+post.innerHTML = html + `
+<div class="post-content">
+<p>${text}</p>
+</div>
+<div class="post-actions">
+<button onclick="likePost(this);event.stopPropagation()">❤️ Thích</button>
+<button onclick="deletePost(this);event.stopPropagation()">🗑 Xóa</button>
+</div>
+`;
+
+document.getElementById("post-list").prepend(post);
+}
+
+// reset
+document.getElementById("post-text").value="";
+fileInput.value="";
+}
+</script>
+
+</body>
+</html>
